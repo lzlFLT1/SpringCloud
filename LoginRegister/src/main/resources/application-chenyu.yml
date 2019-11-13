@@ -1,0 +1,32 @@
+server:
+  port: 8080    # 当前 spring boot 启用的 JVM 进程所使用的 port 端口号
+  tomcat:
+    uri-encoding: utf-8
+
+# 日志配置
+logging:
+  config:
+  level:
+    kasei.springcloud.microcloud.provider: debug
+
+
+
+spring:
+  datasource:
+    name: default
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.90.12.34:3306/ksf?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+    username: root
+    password: root
+    hikari:
+      maximum-pool-size: 30
+      connection-timeout: 300
+
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.xml
+  type-aliases-package: kasei.springcloud.loginregister.repository.entity
+  mapper-locations: classpath:mybatis/mapper/**/*Mapper.xml
+
+

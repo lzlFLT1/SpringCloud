@@ -1,0 +1,16 @@
+
+dependencies {
+    compile project(':Common')
+    compile project(':OrgArchStaff')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: "${SpringBootVersion}"
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-json', version: "${SpringBootVersion}"
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: "${SpringBootVersion}"
+    compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.1.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations'
+
+    compile files(
+            'lib/ojdbc8.jar'  // 加载一个 jar 文件，因为 oracle jdbc 只能通过本地文件引入，不能使用远程自动下载 jar 包
+    )
+}

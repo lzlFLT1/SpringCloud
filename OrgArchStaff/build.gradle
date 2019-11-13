@@ -1,0 +1,12 @@
+
+dependencies {
+    compile project(':Common')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: "${SpringBootVersion}"
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-json', version: "${SpringBootVersion}"
+    compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '2.1.0'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-neo4j', version: "${SpringBootVersion}"
+    compile fileTree(dir:'lib',include:['*.jar'])
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"  // 用于直接注入 yml 文件中的内容
+    
+    //compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
+}

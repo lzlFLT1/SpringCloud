@@ -1,0 +1,27 @@
+SOA(面向服务架构):
+    ESB(企业服务总线)：就是把所有服务统一管理，有一个统一的入口
+
+ESB 中各个服务需要相互通信和相互调用，有时候就产生了 RPC(Remote Process Call; 远程过程调用)，RPC 协议有很多，其中 Restful 协议，由于 JSON 的广泛使用逐渐确立了主流位置
+SpringCloud 中各个服务之间 RPC 调用，用的就是 Restful 协议
+
+SpringCloud Architecture：
+    DataBase -[n:1]- 业务端 MicroService -[1:1]- JVM 进程 -[1:1]- 服务器的 Port 端口 -[m:n]- 用户端 MicroService -[1:1]- 反向代理Nginx -[1:n]- 实际用户
+
+Technology Architecture：
+    UserClient -> Restful API -> Nginx, Apache(Web 端负载均衡) -> 用户端 MicroService(SpringBoot, SpringMVC 实现)
+    -> Feign(接口伪装：将 Restful API 伪装成一个 Java Interface 给程序员使用) -> Restful API -> Zuul 代理(Restful URL 路径映射) -> Eureka(业务端微服务注册中心，根据微服务名映射)-> Ribbon(业务端负载均衡) -> 业务端 MicroService(SpringCloud, SpringBoot 实现)
+    -> Mybatis(持久层框架) -> 数据库集群
+
+Hystrix 熔断机制：
+    User -[调用]-> MicroService A -[调用]-> MicroService B -[调用]-> MicroService C -> 完成业务处理
+    如果 MicroService C 由于网络故障、断电、系统死机等原因无法使用，且微服务 C 没有做熔断处理
+    那么所有调用 C 的其他微服务都将不可用，例如此处的 B
+    然后 B 不可用又会造成所有调用 B 的微服务不可用，例如此处的 A，再级联、递归会造成雪崩式的效应。
+
+    熔断处理方式：当一个微服务不可用的时候，返回一个错误信息，而不是什么都不返回
+
+
+SpringCloudConfig： 所有的配置信息从这个类中获取，这个类可以访问 github，github 中保存所有 *.yml 配置文件
+
+
+

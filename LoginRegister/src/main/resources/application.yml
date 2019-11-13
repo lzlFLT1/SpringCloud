@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: LoginRegister
+  profiles:
+    active: company   # 指定使用 application-company.yml 文件作为配置文件

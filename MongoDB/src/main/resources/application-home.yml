@@ -1,0 +1,41 @@
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: utf-8
+
+
+spring:
+  datasource:
+    neo4j:
+      url: bolt://localhost:7687
+      username: neo4j
+      password: root
+      connection:
+        pool:
+          size: 150
+#    mysql:
+#      type: com.zaxxer.hikari.HikariDataSource
+#      driver-class-name: com.mysql.jdbc.Driver
+#      url: jdbc:mysql://192.168.1.5:3306/ksf?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+#      username: root
+#      password: root
+#      hikari:
+#        maximum-pool-size: 30
+#        connection-timeout: 300
+#    oracle:
+#      type: com.zaxxer.hikari.HikariDataSource
+#      driver-class-name: oracle.jdbc.OracleDriver
+#      url: jdbc:oracle:thin:@//10.63.29.99:1521/BPM12CTS
+#      username: bpm_issue
+#      password: 1234
+#      hikari:
+#        maximum-pool-size: 30
+#        connection-timeout: 300
+
+
+
+
+#mybatis:
+#  config-location: classpath:mybatis/mybatis.xml
+#  type-aliases-package: kasei.springcloud.loginregister.repository.entity
+#  mapper-locations: classpath:mybatis/mapper/**/*Mapper.xml

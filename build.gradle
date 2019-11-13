@@ -1,0 +1,66 @@
+/** todo 坑
+ * @trap 'string' 单引号表示纯字符串，不能使用 ${var} 变量，只有 "string" 才可以
+ * */
+
+
+/** todo Gradle 脚本本身执行所需要的配置 */
+buildscript {
+    ext {
+        SpringBootVersion = '2.2.0.RELEASE'
+    }
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+        mavenCentral()
+        
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${SpringBootVersion}"
+    }
+}
+
+configurations {
+    all*.exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+}
+
+subprojects {  
+
+
+    ext {
+        Author = "KaseiHaku"
+        SpringBootVersion = '2.2.0.RELEASE'
+        SpringCloudVersion = 'Greenwich.SR3'
+        // HikariCPVersion = '2.8.0'        // Spring 默认的数据库连接池就是 Hikari，所以 Hikari 版本由 Spring 控制
+        JjwtVersion = '0.9.1'
+    }
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+
+    sourceCompatibility = 1.11                     // 项目中代码使用的 JDK 版本
+    targetCompatibility = 1.11                     // 编译后的 .class 文件的 JDK 版本
+    version = '0.0.1'
+
+
+    /** todo 定义所有项目中使用的仓库 */
+    repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+        mavenCentral()
+        jcenter()
+
+    }
+
+
+    dependencies {
+        testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "${SpringBootVersion}"
+    }
+
+} 
+
+
+
+ 
+
+

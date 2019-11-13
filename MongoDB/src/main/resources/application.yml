@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: MongoDB
+  profiles:
+    active: home
