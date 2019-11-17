@@ -18,9 +18,7 @@ buildscript {
     }
 }
 
-configurations {
-    all*.exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-}
+
 
 subprojects {  
 
@@ -33,16 +31,23 @@ subprojects {
         JjwtVersion = '0.9.1'
     }
 
+    
+
     apply plugin: 'java'
     apply plugin: 'idea'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
 
-    sourceCompatibility = 1.11                     // 项目中代码使用的 JDK 版本
-    targetCompatibility = 1.11                     // 编译后的 .class 文件的 JDK 版本
+    sourceCompatibility = JavaVersion.VERSION_11        // 项目中代码使用的 JDK 版本
+    targetCompatibility = JavaVersion.VERSION_11        // 编译后的 .class 文件的 JDK 版本
     version = '0.0.1'
 
+    configurations {
+
+        compile.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'  // 排除掉 spring 默认的日志框架(logback)
+        testCompile.exclude group: 'org.junit.vintage'  // 排除掉 Junit5 兼容 Junit4 的 jar 包
+    }
 
     /** todo 定义所有项目中使用的仓库 */
     repositories {
@@ -52,9 +57,15 @@ subprojects {
 
     }
 
+ 
 
     dependencies {
-        testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "${SpringBootVersion}"
+        /** todo gradle 源吗 */
+        runtimeOnly fileTree(dir:'/opt/Gradle/gradle-5.6.4/lib/', includes:["*.jar"])
+        /** todo 日志 */
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: "${SpringBootVersion}"
+        /** todo 测试 */
+        testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "${SpringBootVersion}"
     }
 
 } 

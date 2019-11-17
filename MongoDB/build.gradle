@@ -2,7 +2,6 @@
 
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: "${SpringBootVersion}"
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: "${SpringBootVersion}"
 
-
-    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
