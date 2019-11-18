@@ -1,5 +1,10 @@
 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 dependencies {
-    
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: "${SpringBootVersion}"
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: "${SpringBootVersion}"
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: "${SpringBootVersion}"
+
 }

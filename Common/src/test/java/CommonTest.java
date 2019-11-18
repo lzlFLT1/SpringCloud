@@ -30,13 +30,6 @@ public class CommonTest {
     public void test(){
 
 
-        for(int i=0; i<4; i++){
-
-            System.out.println(JwtUtil.createJWT(null));
-        }
-
-
-
     }
 
 }
