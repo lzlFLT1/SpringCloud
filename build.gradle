@@ -30,12 +30,11 @@ subprojects {
         // HikariCPVersion = '2.8.0'        // Spring 默认的数据库连接池就是 Hikari，所以 Hikari 版本由 Spring 控制
         JjwtVersion = '0.9.1'
     }
-
     
 
     apply plugin: 'java'
     apply plugin: 'idea'
-    apply plugin: 'org.springframework.boot'
+    apply plugin: 'org.springframework.boot' 
     apply plugin: 'io.spring.dependency-management'
 
 
@@ -49,6 +48,22 @@ subprojects {
         testCompile.exclude group: 'org.junit.vintage'  // 排除掉 Junit5 兼容 Junit4 的 jar 包
     }
 
+
+    /** todo 定义源码路径 */
+    sourceSets {
+        main {
+            java {
+                srcDirs = ['src/main/java', '/opt/Gradle/gradle-5.6.4/src']
+            }
+        }
+
+        test {
+            java {
+                srcDirs = ['test/mian/java']
+            }
+        }
+    }
+    
     /** todo 定义所有项目中使用的仓库 */
     repositories {
         maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
@@ -60,8 +75,8 @@ subprojects {
  
 
     dependencies {
-        /** todo gradle 源吗 */
-        runtimeOnly fileTree(dir:'/opt/Gradle/gradle-5.6.4/lib/', includes:["*.jar"])
+        /** todo gradle 源码 */
+        testRuntimeOnly fileTree(dir:'/opt/Gradle/gradle-5.6.4/lib/', includes:["*.*"])
         /** todo 日志 */
         implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: "${SpringBootVersion}"
         /** todo 测试 */
