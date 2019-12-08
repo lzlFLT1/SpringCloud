@@ -2,3 +2,4 @@
 dependencies {
     compile group: 'io.jsonwebtoken', name: 'jjwt', version: "${JjwtVersion}"
 }
+

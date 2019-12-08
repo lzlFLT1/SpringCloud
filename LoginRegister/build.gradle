@@ -10,7 +10,6 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations'
 
-    compile files(
-            'lib/ojdbc8.jar'  // 加载一个 jar 文件，因为 oracle jdbc 只能通过本地文件引入，不能使用远程自动下载 jar 包
-    )
+    compile fileTree( dir: 'lib')// 加载一个 jar 文件，因为 oracle jdbc 只能通过本地文件引入，不能使用远程自动下载 jar 包
+
 }

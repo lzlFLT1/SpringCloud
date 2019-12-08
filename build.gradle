@@ -53,7 +53,7 @@ subprojects {
     sourceSets {
         main {
             java {
-                srcDirs = ['src/main/java', '/opt/Gradle/gradle-5.6.4/src']
+                srcDirs = ['src/main/java']
             }
         }
 
