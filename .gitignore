@@ -5,8 +5,5 @@
 /**/out/
 /**/build/
 
-# 不排除 /SpringCloud/.idea 目录, 防止项目环境不同
-/.idea/
-
 # 排除 /SpringCloud/.gradle 目录
 /.gradle/
