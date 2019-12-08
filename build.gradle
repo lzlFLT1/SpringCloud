@@ -76,7 +76,7 @@ subprojects {
 
     dependencies {
         /** todo gradle 源码 */
-        testRuntimeOnly fileTree(dir:'/opt/Gradle/gradle-5.6.4/lib/', includes:["*.*"])
+        // testRuntimeOnly fileTree(dir:'/opt/Gradle/gradle-5.6.4/src/', includes:["*.*"])
         /** todo 日志 */
         implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: "${SpringBootVersion}"
         /** todo 测试 */
