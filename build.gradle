@@ -1,38 +1,19 @@
-/** todo 坑
- * @trap 'string' 单引号表示纯字符串，不能使用 ${var} 变量，只有 "string" 才可以
- * */
-
-
 /** todo Gradle 脚本本身执行所需要的配置 */
 buildscript {
-    ext {
-        SpringBootVersion = '2.2.0.RELEASE'
-    }
     repositories {
         maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
         mavenCentral()
-        
+
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:${SpringBootVersion}"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.2.0.RELEASE"
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.8.RELEASE"
     }
 }
 
-
-
-subprojects {  
-
-
-    ext {
-        Author = "KaseiHaku"
-        SpringBootVersion = '2.2.0.RELEASE'
-        SpringCloudVersion = 'Greenwich.SR3'
-        // HikariCPVersion = '2.8.0'        // Spring 默认的数据库连接池就是 Hikari，所以 Hikari 版本由 Spring 控制
-        JjwtVersion = '0.9.1'
-    }
+subprojects {
     
-
-    apply plugin: 'java'
+    apply plugin: "java"
     apply plugin: 'idea'
     apply plugin: 'org.springframework.boot' 
     apply plugin: 'io.spring.dependency-management'
@@ -43,26 +24,10 @@ subprojects {
     version = '0.0.1'
 
     configurations {
-
         compile.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'  // 排除掉 spring 默认的日志框架(logback)
         testCompile.exclude group: 'org.junit.vintage'  // 排除掉 Junit5 兼容 Junit4 的 jar 包
     }
 
-
-    /** todo 定义源码路径 */
-    sourceSets {
-        main {
-            java {
-                srcDirs = ['src/main/java']
-            }
-        }
-
-        test {
-            java {
-                srcDirs = ['test/mian/java']
-            }
-        }
-    }
     
     /** todo 定义所有项目中使用的仓库 */
     repositories {
@@ -71,16 +36,30 @@ subprojects {
         jcenter()
 
     }
+    
+    ext {
+        Author = "KaseiHaku"
+        SpringBootVersion = '2.2.2.RELEASE'
+        SpringCloudVersion = 'Greenwich.SR3'
+        SpringDependencyManagementVersion = '1.0.8.RELEASE'
+    }
 
- 
-
+    dependencyManagement {
+        imports {
+            mavenBom 'io.spring.platform:platform-bom:Cairo-SR4'
+        }
+    }
     dependencies {
-        /** todo gradle 源码 */
-        // testRuntimeOnly fileTree(dir:'/opt/Gradle/gradle-5.6.4/src/', includes:["*.*"])
-        /** todo 日志 */
-        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: "${SpringBootVersion}"
-        /** todo 测试 */
-        testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: "${SpringBootVersion}"
+
+        /** todo Gradle 支持的依赖方式
+         * compileOnly — for dependencies that are necessary to compile your production code but shouldn’t be part of the runtime classpath
+         * implementation (supersedes compile) — used for compilation and runtime
+         * runtimeOnly (supersedes runtime) — only used at runtime, not for compilation
+         * testCompileOnly — same as compileOnly except it’s for the tests
+         * testImplementation — test equivalent of implementation
+         * testRuntimeOnly — test equivalent of runtimeOnly
+         * */
+        
     }
 
 } 

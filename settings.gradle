@@ -3,11 +3,17 @@
  * @trap Groovy 中 单引号包含的表示纯粹的字符串，双引号包含的才可以引用变量
  * */
 rootProject.name = 'SpringCloud'
-
+    
+include 'Common'    
+include 'WebFlux'
+include 'Mybatis'
+    
+    
+    
 include 'LoginRegister'
-include 'Common'
+
 include 'OrgArchStaff'
 include 'Redis'
 include 'Kafka'
-include 'WebFlux'
+
 

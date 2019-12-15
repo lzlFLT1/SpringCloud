@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/Common" />
             <option value="$PROJECT_DIR$/Kafka" />
             <option value="$PROJECT_DIR$/LoginRegister" />
+            <option value="$PROJECT_DIR$/Mybatis" />
             <option value="$PROJECT_DIR$/OrgArchStaff" />
             <option value="$PROJECT_DIR$/Redis" />
             <option value="$PROJECT_DIR$/WebFlux" />
